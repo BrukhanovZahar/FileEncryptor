@@ -15,6 +15,7 @@ const CryptoPP::byte *EncryptionLib::generate_IV() {
     prng.GenerateBlock(iv, IV_SIZE);
 
     //указатель на начало массива
+
     return iv;
 }
 
