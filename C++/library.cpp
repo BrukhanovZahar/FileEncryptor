@@ -14,7 +14,7 @@ const CryptoPP::byte *EncryptionLib::generate_IV() {
     // Генерация случайного IV
     prng.GenerateBlock(iv, IV_SIZE);
 
-    // Возвращаем указатель на начало массива
+    //указатель на начало массива
     return iv;
 }
 
