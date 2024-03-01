@@ -14,7 +14,6 @@ int main(){
         std::cout << std::hex << static_cast<int>(IV[i]);
     }
     std::cout << std::endl;
-
     std::cout << "Сгенерированный KEY: ";
     for (size_t i = 0; i < CryptoPP::AES::BLOCKSIZE; ++i) {
         std::cout << std::hex << static_cast<int>(KEY[i]);
