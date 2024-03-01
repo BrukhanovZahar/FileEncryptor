@@ -12,9 +12,9 @@
 
 namespace EncryptionLib{
     const CryptoPP::byte* generate_IV();
-    //нет очистки памяти
+    //все ок, есть очистка памяти
     void encrypt_file(const std::string& input_file, const std::string& output_file, const CryptoPP::byte* key, const CryptoPP::byte* iv);
-    //нет очистки памяти
+    //все ок, есть очистка памяти
     void decrypt_file(const std::string& input_file, const std::string& output_file, const CryptoPP::byte* key, const CryptoPP::byte* iv);
 }
 

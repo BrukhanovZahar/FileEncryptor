@@ -35,16 +35,9 @@ void EncryptionLib::encrypt_file(const std::string& input_file, const std::strin
 
         /*цепочка фильтров для обработки данных (шифрование файла) (освобождение памяти должно проходить в таком порядке 1)delete ptr_filter; 2)delete ptr_sink;)*/
 
-        //CryptoPP::FileSink* ptr_sink = new CryptoPP::FileSink(f_out);
         auto* ptr_sink = new CryptoPP::FileSink(f_out);
-
-        //CryptoPP::StreamTransformationFilter* ptr_filter = new CryptoPP::StreamTransformationFilter(encryption, ptr_sink);
         auto* ptr_filter = new CryptoPP::StreamTransformationFilter(encryption, ptr_sink);
-
-
         CryptoPP::FileSource fileSource(f_in, true, ptr_filter);
-
-
     }catch (const CryptoPP::Exception& ex){ // Exception тип исключения из библиотеки Crypto++
         std::cerr << ex.what() << std::endl;
         return;
