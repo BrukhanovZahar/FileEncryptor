@@ -15,7 +15,6 @@ const CryptoPP::byte *EncryptionLib::generate_IV() {
     prng.GenerateBlock(iv, IV_SIZE);
 
     //указатель на начало массива
-
     return iv;
 }
 
@@ -79,7 +78,7 @@ void EncryptionLib::decrypt_file(const std::string& input_file, const CryptoPP::
     if (pos != std::string::npos) {
         output_file = output_file.substr(0, pos); // удаляем расширение файла
     }
-    output_file += "_decrypted";
+    output_file += "_decrypted.jpg";
 
     std::ofstream f_out(output_file, std::ios::binary);
 
