@@ -1,8 +1,8 @@
 #include "library.h"
 
 int main(){
-    std::string path_to_notcrypt = "/Users/danast/Desktop/encryption/notcrypt.txt";
-    std::string path_to_willBeEncr = "/Users/danast/Desktop/encryption/notcrypt.txt_encrypted";
+    std::string path_to_notcrypt = "/Users/danast/Desktop/encryption/notcrypt.jpg";
+    std::string path_to_willBeEncr = "/Users/danast/Desktop/encryption/notcrypt_encrypted.jpg";
     //std::string path_to_decrypt = "/Users/danast/Desktop/encryption/decrypt.txt";
 
     //для простоты, ключ и IV будут одинаковыми
