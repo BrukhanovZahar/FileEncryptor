@@ -78,7 +78,12 @@ void EncryptionLib::decrypt_file(const std::string& input_file, const CryptoPP::
     if (pos != std::string::npos) {
         output_file = output_file.substr(0, pos); // удаляем расширение файла
     }
-    output_file += "_decrypted.jpg";
+
+    size_t pos_under = output_file.find_last_of("_");
+    if (pos_under != pos) {
+        output_file = output_file.substr(0, pos_under); // удаляем "encryption"
+    }
+    output_file += "_decrypted.jpg"; // а в конце добавляем, что файл расшифрован
 
     std::ofstream f_out(output_file, std::ios::binary);
 
