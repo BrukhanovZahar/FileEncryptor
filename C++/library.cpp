@@ -28,7 +28,7 @@ void EncryptionLib::encrypt_file(const std::string& input_file, const CryptoPP::
     }
 
     // Находим позицию последней точки (расширения файла)
-    size_t dot_pos = input_file.find_last_of(".");
+    size_t dot_pos = input_file.find_last_of('.');
 
     // Проверяем, что точка найдена и не является первым символом или последним символом в строке
     if (dot_pos != std::string::npos && dot_pos > 0 && dot_pos < input_file.length() - 1) {
@@ -74,15 +74,16 @@ void EncryptionLib::decrypt_file(const std::string& input_file, const CryptoPP::
     // Предполагаем, что имя зашифрованного файла имеет "_encrypted" в конце,
     // чтобы создать имя расшифрованного файла.
     std::string output_file = input_file;
-    size_t pos = output_file.find_last_of(".");
+    size_t pos = output_file.find_last_of('.');
     if (pos != std::string::npos) {
         output_file = output_file.substr(0, pos); // удаляем расширение файла
     }
 
-    size_t pos_under = output_file.find_last_of("_");
+    size_t pos_under = output_file.find_last_of('_');
     if (pos_under != pos) {
         output_file = output_file.substr(0, pos_under); // удаляем "encryption"
     }
+
     output_file += "_decrypted.jpg"; // а в конце добавляем, что файл расшифрован
 
     std::ofstream f_out(output_file, std::ios::binary);
