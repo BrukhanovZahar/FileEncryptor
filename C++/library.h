@@ -9,8 +9,11 @@
 #include <cryptopp/filters.h>
 #include <cryptopp/files.h>
 #include <string>
+#include <random>
+#include <regex>
 
 namespace EncryptionLib{
+    const CryptoPP::byte* generate_strong_password();
     const CryptoPP::byte* generate_IV();
     //все ок, есть очистка памяти
     void encrypt_file(const std::string& input_file, const CryptoPP::byte* key, const CryptoPP::byte* iv);

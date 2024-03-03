@@ -1,5 +1,41 @@
 #include "library.h"
 
+const CryptoPP::byte *EncryptionLib::generate_strong_password(){
+    const size_t s_p_SIZE = 45;
+
+    std::string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Заглавные буквы
+    std::string lowercase = "abcdefghijklmnopqrstuvwxyz"; // Строчные буквы
+    std::string numbers = "0123456789"; // Цифры
+    std::string specialChars = "!@#$%^&*()-_+="; // Специальные символы
+
+    // Общий набор символов, из которых будет составлен пароль
+    std::string allChars = uppercase + lowercase + numbers + specialChars;
+
+    // Создание регулярного выражения для проверки пароля на соответствие требованиям
+    std::regex pattern("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()-_+=]).{" + std::to_string(s_p_SIZE) + ",}");
+
+    // Инициализация генератора случайных чисел
+    std::random_device rd;
+    std::mt19937 generator(rd());
+
+    // Перемешивание символов в allChars для случайного выбора
+    std::shuffle(allChars.begin(), allChars.end(), generator);
+
+    std::string password;
+    do {
+        password.clear();
+        // Генерация пароля из случайных символов
+        for (int i = 0; i < s_p_SIZE; ++i) {
+            password += allChars[generator() % allChars.length()];
+        }
+    } while (!std::regex_match(password, pattern)); // Проверка пароля на соответствие регулярному выражению
+
+    static CryptoPP::byte strong_pass[s_p_SIZE];
+
+    return strong_pass; // Возврат сгенерированного сильного пароля
+
+}
+
 const CryptoPP::byte *EncryptionLib::generate_IV() {
     // Размер IV для AES в режиме CBC
     const size_t IV_SIZE = CryptoPP::AES::BLOCKSIZE;
