@@ -32,8 +32,11 @@ const CryptoPP::byte *EncryptionLib::generate_strong_password(){
 
     static CryptoPP::byte strong_pass[s_p_SIZE];
 
-    return strong_pass; // Возврат сгенерированного сильного пароля
+    for (int i = 0; i < s_p_SIZE; ++i) {
+        strong_pass[i] = password[i];
+    }
 
+    return strong_pass; // Возврат сгенерированного сильного пароля
 }
 
 const CryptoPP::byte *EncryptionLib::generate_IV() {
