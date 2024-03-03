@@ -11,7 +11,7 @@ int main(){
 
     //для простоты, ключ и IV будут одинаковыми
     const CryptoPP::byte* IV = EncryptionLib::generate_IV();
-    const CryptoPP::byte* KEY = EncryptionLib::generate_IV();
+    const CryptoPP::byte* KEY = EncryptionLib::generate_strong_password();
 
     std::cout << "Сгенерированный IV: ";
     for (size_t i = 0; i < CryptoPP::AES::BLOCKSIZE; ++i) {
